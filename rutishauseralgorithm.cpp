@@ -91,6 +91,8 @@ void RutishauserAlgorithm::removeExpression(QStringList& items, int first, int s
 
 double RutishauserAlgorithm::calculate()
 {
+    buildLevels();
+
     QStringList items = this->items;
 
     while(levels.size() != 1)

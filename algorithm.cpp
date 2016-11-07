@@ -17,6 +17,8 @@ Algorithm::Algorithm()
 
 bool Algorithm::check()
 {
+    split();
+
     int braces = 0;
     foreach(QString item, items)
     {
@@ -37,7 +39,7 @@ double Algorithm::executeAction(QString first, QString second, QString action)
     else if(action == "cos")
         return cos(first.toDouble());
     else if(action == "tg")
-        return tg(first.toDouble());
+        return tan(first.toDouble());
     else if(action == "ln")
         return log(first.toDouble());
     else if(action == "+")

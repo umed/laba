@@ -20,6 +20,10 @@ public:
 protected slots:
     void check();
     void calc();
+    bool tryCheck();
+
+    void buttonPressed();
+
 private:
     Ui::CalcWidget *ui;
     std::shared_ptr<Algorithm> algorithm;

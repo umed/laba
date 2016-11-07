@@ -81,7 +81,7 @@ double RpnAlgorithm::calculate()
         output[0] = QString::number(executeAction(first, second, action));
     }
 
-    return output[0].toDouble();
+    return output.last().toDouble();
 }
 
 bool RpnAlgorithm::isNumber(QString item)
