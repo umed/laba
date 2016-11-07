@@ -10,6 +10,7 @@ CalcWidget::CalcWidget(std::shared_ptr<Algorithm> algorithm, QWidget *parent) :
 
     connect(ui->check, SIGNAL(clicked(bool)), this, SLOT(check()));
     connect(ui->calculate, SIGNAL(clicked(bool)), this, SLOT(calc()));
+    connect(ui->remove, SIGNAL(clicked(bool)), this, SLOT(remove()));
 
     connect(ui->button0, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->button1, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
@@ -21,10 +22,9 @@ CalcWidget::CalcWidget(std::shared_ptr<Algorithm> algorithm, QWidget *parent) :
     connect(ui->button7, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->button8, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->button9, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
-    connect(ui->cos, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->divide, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
+    connect(ui->cos, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->dot, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
-    connect(ui->leftBrace, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->log, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->minus, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->muliply, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
@@ -67,10 +67,19 @@ bool CalcWidget::tryCheck()
 
 void CalcWidget::buttonPressed()
 {
+    if(!ui->result->text().isEmpty())
+        ui->result->setText("");
+
     QPushButton* button = qobject_cast<QPushButton*>(sender());
 
     QString expression = ui->expression->text();
     ui->expression->setText(expression + button->text());
+}
+
+void CalcWidget::remove()
+{
+    ui->expression->setText("");
+    ui->result->setText("");
 }
 
 void CalcWidget::check()

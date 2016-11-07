@@ -24,6 +24,7 @@ protected slots:
 
     void buttonPressed();
 
+    void remove();
 private:
     Ui::CalcWidget *ui;
     std::shared_ptr<Algorithm> algorithm;
