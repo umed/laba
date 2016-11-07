@@ -5,16 +5,6 @@ RutishauserAlgorithm::RutishauserAlgorithm()
 
 }
 
-bool RutishauserAlgorithm::check()
-{
-    split();
-    buildLevels();
-
-    if(levels[0] != levels[levels.size() - 1])
-        return false;
-    return true;
-}
-
 int RutishauserAlgorithm::calcLevel(QString value, int current)
 {
     bool result = false;

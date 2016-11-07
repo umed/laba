@@ -9,7 +9,6 @@ class RutishauserAlgorithm : public Algorithm
 public:
     RutishauserAlgorithm();
 
-    bool check() override;
     double calculate() override;
 
 private:
