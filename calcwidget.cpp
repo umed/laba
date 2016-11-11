@@ -111,11 +111,11 @@ void CalcWidget::calc()
             ui->result->setText("Количество скобок не совпало.");
         }
     }
-    catch(std::invalid_argument e)
+    catch(std::invalid_argument invalidArgument)
     {
-        ui->result->setText(e.what());
+        ui->result->setText(invalidArgument.what());
     }
-    catch(...)
+    catch(std::exception e)
     {
         ui->result->setText("Не удалось посчитать");
     }

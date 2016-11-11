@@ -54,6 +54,11 @@ void RpnAlgorithm::buildOutputItemSequence()
 
 double RpnAlgorithm::calculate()
 {
+    if(items.size() == 0)
+        return 0.0;
+    if(items.size() == 1)
+        return items[0].toDouble();
+
     buildOutputItemSequence();
 
     while(output.size() != 1)
@@ -64,7 +69,7 @@ double RpnAlgorithm::calculate()
             throw std::invalid_argument("Неверное выражение");
 
         first = output[0];
-        if(isNumber(output[1]))
+        if(output.size() > 2 && isNumber(output[1]))
         {
             second = output[1];
             action = output[2];

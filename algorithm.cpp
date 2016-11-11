@@ -15,10 +15,14 @@ Algorithm::Algorithm()
     dictionary.append("ln");
 }
 
+void Algorithm::setExpression(const QString &expression)
+{
+    this->expression = expression;
+    items = split();
+}
+
 bool Algorithm::check()
 {
-    split();
-
     int braces = 0;
     foreach(QString item, items)
     {
@@ -76,7 +80,9 @@ QVector<Algorithm::Entry> Algorithm::getEntries()
         }
     }
 
-    qSort(entries.begin(), entries.end(), [](const Entry& first, const Entry& second){ return first.startIndex < second.startIndex; });
+    qSort(entries.begin(), entries.end(), [](const Entry& first, const Entry& second) {
+        return first.startIndex < second.startIndex;
+    });
 
     return entries;
 }
@@ -87,10 +93,17 @@ QStringList Algorithm::split()
 
     QStringList result;
 
+    if(entries.size() == 0)
+    {
+        result.append(expression);
+        return result;
+    }
 
-    if(entries[0].startIndex > 0)
+    if(entries.size() > 0 && entries[0].startIndex > 0)
+    {
         result.append(expression.mid(0, entries[0].startIndex));
-    result.append(entries[0].value);
+        result.append(entries[0].value);
+    }
 
     for(int i = 1; i < entries.size(); i++)
     {
@@ -111,6 +124,5 @@ QStringList Algorithm::split()
     if(position < expression.size())
         result.append(expression.mid(position, expression.size() - position));
 
-    items = result;
     return result;
 }

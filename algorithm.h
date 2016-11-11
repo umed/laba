@@ -10,6 +10,10 @@ class Algorithm
 protected:
     struct Entry
     {
+        Entry() : value(""), startIndex(0)
+        {
+        }
+
         QString value;
         int startIndex;
     };
@@ -17,27 +21,35 @@ protected:
 public:
     Algorithm();
 
-    virtual void setExpression(const QString& expression)
-    {
-        this->expression = expression;
-        check();
-    }
+    // устанавливает строку с выражением
+    virtual void setExpression(const QString& expression);
 
+    // проверяет соответствие открытых/закрытых скобок
     virtual bool check();
+
+    // функция подсчёта, потомки данного класса должны реализовать её
     virtual double calculate() = 0;
 
     virtual ~Algorithm();
 
 protected:
+    // выполняет операцию (сложение, перемножение и т.д.)
     double executeAction(QString first, QString second, QString action);
 
+    // получает все числа из входной строки
     QVector<Entry> getEntries();
 
+    // получает из выражения всех действия
+    // и объединяет числа и действия,
+    // результат записывает в items
     QStringList split();
 
 protected:
+    // исходная строка выражения
     QString expression;
+    // список действий (плюс, минус и т.д.)
     QStringList dictionary;
+    // список чисел и действий по порядку
     QStringList items;
 };
 
