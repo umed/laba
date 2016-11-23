@@ -2,7 +2,6 @@
 
 RutishauserAlgorithm::RutishauserAlgorithm()
 {
-
 }
 
 int RutishauserAlgorithm::calcLevel(QString value, int current)

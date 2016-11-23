@@ -2,11 +2,13 @@
 
 BaurZamelzonAlgorithm::BaurZamelzonAlgorithm()
 {
-
 }
 
 void BaurZamelzonAlgorithm::executeLastOperation()
 {
+    if(translator.empty())
+        return;
+
     QString first = interpretator.pop();
     QString second = interpretator.pop();
     QString action = translator.pop();
@@ -69,15 +71,12 @@ double BaurZamelzonAlgorithm::calculate()
 {
     foreach(QString item, items)
     {
-        if(dictionary.indexOf(item) < 0)
-        {
-            processing(item);
-        }
-        else
-        {
+        if(isNumber(item))
             interpretator.push(item);
-        }
+        else
+            processing(item);
     }
+    executeLastOperation();
     return interpretator.top().toDouble();
 }
 

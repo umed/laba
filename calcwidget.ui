@@ -95,16 +95,16 @@
     </widget>
    </item>
    <item row="4" column="4">
-    <widget class="QPushButton" name="log">
+    <widget class="QPushButton" name="ln">
      <property name="text">
-      <string>log</string>
+      <string>ln</string>
      </property>
     </widget>
    </item>
    <item row="4" column="5">
-    <widget class="QPushButton" name="tan">
+    <widget class="QPushButton" name="tg">
      <property name="text">
-      <string>tan</string>
+      <string>tg</string>
      </property>
     </widget>
    </item>

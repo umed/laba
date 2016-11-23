@@ -12,13 +12,18 @@ public:
     double calculate() override;
 
 private:
+    // данный алгоритм обрабатывает скобок в... забыл название нотации (4 3 +)
+    // эта штука формирует корректную строку для выполнения алгоритма
     void buildOutputItemSequence();
-    bool isNumber(QString item);
+    // эта штука считает приоритет операций
     int operationPriority(QString item);
+    // обработка (кладёт в стек или считает выражение)
     void processing(QString item);
 
 private:
+    // стек для подсчёта результата
     QStack<QString> stack;
+    // переделанное отображение выражения
     QStringList output;
 };
 

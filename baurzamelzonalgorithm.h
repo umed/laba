@@ -12,8 +12,12 @@ public:
     double calculate() override;
 
 private:
+    // обрабатываем один элемент (кладёт его в нужный стек)
     void processing(QString item);
+    // выполняет верхную операцию со стека
     void executeLastOperation();
+    // выполняет верхнюю операцию со стека для определённого
+    //  элемента (например, когда встречается закрывающая скобка)
     void executeLastOperation(QString item);
 
 private:

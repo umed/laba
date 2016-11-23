@@ -89,11 +89,6 @@ double RpnAlgorithm::calculate()
     return output.last().toDouble();
 }
 
-bool RpnAlgorithm::isNumber(QString item)
-{
-    return !dictionary.contains(item);
-}
-
 int RpnAlgorithm::operationPriority(QString item)
 {
     if(item == "(")

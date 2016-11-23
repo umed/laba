@@ -2,17 +2,23 @@
 
 Algorithm::Algorithm()
 {
-    dictionary.append("+");
-    dictionary.append("-");
-    dictionary.append("*");
-    dictionary.append("/");
-    dictionary.append("(");
-    dictionary.append(")");
-    dictionary.append("^");
-    dictionary.append("cos");
-    dictionary.append("sin");
-    dictionary.append("tg");
-    dictionary.append("ln");
+    operations.append("+");
+    operations.append("-");
+    operations.append("*");
+    operations.append("/");
+    operations.append("(");
+    operations.append(")");
+    operations.append("^");
+    operations.append("cos");
+    operations.append("sin");
+    operations.append("tg");
+    operations.append("ln");
+
+
+    unaryOperations.append("cos");
+    unaryOperations.append("sin");
+    unaryOperations.append("tan");
+    unaryOperations.append("cos");
 }
 
 void Algorithm::setExpression(const QString &expression)
@@ -63,20 +69,20 @@ double Algorithm::executeAction(QString first, QString second, QString action)
 QVector<Algorithm::Entry> Algorithm::getEntries()
 {
     QVector<Entry> entries;
-    for(int i = 0; i < dictionary.size(); i++)
+    for(int i = 0; i < operations.size(); i++)
     {
-        int position = expression.indexOf(dictionary[i], 0);
+        int position = expression.indexOf(operations[i], 0);
 
         while(position > -1 && position < expression.size())
         {
             Entry entry;
-            entry.value = dictionary[i];
+            entry.value = operations[i];
             entry.startIndex = position;
 
             entries.push_back(entry);
 
-            position += dictionary[i].size();
-            position = expression.indexOf(dictionary[i], position);
+            position += operations[i].size();
+            position = expression.indexOf(operations[i], position);
         }
     }
 
@@ -85,6 +91,11 @@ QVector<Algorithm::Entry> Algorithm::getEntries()
     });
 
     return entries;
+}
+
+bool Algorithm::isNumber(QString item)
+{
+    return !operations.contains(item);
 }
 
 QStringList Algorithm::split()
@@ -125,4 +136,17 @@ QStringList Algorithm::split()
         result.append(expression.mid(position, expression.size() - position));
 
     return result;
+}
+
+bool Algorithm::isUnaryOperations(const QString &operation)
+{
+    return unaryOperations.indexOf(operation) > -1;
+}
+
+void Algorithm::showItems()
+{
+    foreach(QString item, items)
+    {
+        qDebug()<<item;
+    }
 }

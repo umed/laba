@@ -25,14 +25,14 @@ CalcWidget::CalcWidget(std::shared_ptr<Algorithm> algorithm, QWidget *parent) :
     connect(ui->divide, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->cos, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->dot, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
-    connect(ui->log, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
+    connect(ui->ln, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->minus, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->muliply, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->plus, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->power, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->rightBrace, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
     connect(ui->sin, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
-    connect(ui->tan, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
+    connect(ui->tg, SIGNAL(clicked(bool)), this, SLOT(buttonPressed()));
 }
 
 CalcWidget::~CalcWidget()
