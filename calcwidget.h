@@ -18,15 +18,23 @@ public:
     ~CalcWidget();
 
 protected slots:
+    // событие, обрабатывающая кнопку check
+    // проверяет соответствие количества скобок
     void check();
+    // событие =
+    // считает
     void calc();
+    // проверяет, верно ли выражение и можно ли его посчитать
     bool tryCheck();
 
+    // нажатие любой из кнопок с выражением (1, 2, sin, ln)
     void buttonPressed();
 
+    // кнопка удаления
     void remove();
 private:
     Ui::CalcWidget *ui;
+    // указатель на нужный алгоритм
     std::shared_ptr<Algorithm> algorithm;
 };
 

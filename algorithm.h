@@ -37,7 +37,7 @@ public:
 
 protected:
     // выполняет операцию (сложение, перемножение и т.д.)
-    double executeAction(QString first, QString second, QString action = QString());
+    double executeAction(QString first, QString action, QString second = QString());
 
     // получает все числа из входной строки
     QVector<Entry> getEntries();

@@ -42,7 +42,7 @@ bool Algorithm::check()
 
 Algorithm::~Algorithm(){}
 
-double Algorithm::executeAction(QString first, QString second, QString action)
+double Algorithm::executeAction(QString first, QString action, QString second)
 {
     if(action == "sin")
         return sin(first.toDouble());

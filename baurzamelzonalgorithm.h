@@ -21,7 +21,9 @@ private:
     void executeLastOperation(QString item);
 
 private:
+    // стек для хранения операций (+ или скобка и т.д.)
     QStack<QString> translator;
+    // для хранения чисел
     QStack<QString> interpretator;
 };
 

@@ -15,7 +15,7 @@ int RutishauserAlgorithm::calcLevel(QString value, int current)
     return current - 1;
 }
 
-void RutishauserAlgorithm::getLevelExpression(int level, int& indexFirst, int& indexSecond, int& indexAction)
+void RutishauserAlgorithm::getExpressionIndexesByLevel(int level, int& indexFirst, int& indexSecond, int& indexAction)
 {
     for(int i = 0; i < levels.size(); i++)
     {
@@ -99,7 +99,7 @@ double RutishauserAlgorithm::calculate()
         int first, second, action;
         int maxLevel = getMaxLevel();
 
-        getLevelExpression(maxLevel, first, second, action);
+        getExpressionIndexesByLevel(maxLevel, first, second, action);
 
         double value = executeAction(items[first], items[second], items[action]);
 

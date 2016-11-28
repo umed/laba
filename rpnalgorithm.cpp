@@ -61,32 +61,26 @@ double RpnAlgorithm::calculate()
 
     buildOutputItemSequence();
 
-    while(output.size() != 1)
+    while(!output.empty())
     {
-        QString first, second, action;
-
-        if(!isNumber(output[0]))
-            throw std::invalid_argument("Неверное выражение");
-
-        first = output[0];
-        if(output.size() > 2 && isNumber(output[1]))
+        if(isNumber(output.front()))
         {
-            second = output[1];
-            action = output[2];
-
-            output.removeAt(2);
-            output.removeAt(1);
+            stack.push(output.front());
+        }
+        else if(isUnaryOperations(output.first()))
+        {
+            double result = executeAction(stack.pop(), output.first());
+            stack.push(QString::number(result));
         }
         else
         {
-            action = output[1];
-            output.removeAt(1);
+            double result = executeAction(stack.pop(), output.first(), stack.pop());
+            stack.push(QString::number(result));
         }
-
-        output[0] = QString::number(executeAction(first, second, action));
+        output.removeFirst();
     }
 
-    return output.last().toDouble();
+    return stack.pop().toDouble();
 }
 
 int RpnAlgorithm::operationPriority(QString item)
